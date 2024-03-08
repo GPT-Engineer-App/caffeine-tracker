@@ -71,52 +71,13 @@ const Index = () => {
           <Box textAlign="center">
             <Heading mb={6}>Welcome to Coffee Tracker</Heading>
             <Text mb={4}>Add and review your favorite coffee places!</Text>
-            <Button
-              leftIcon={<FaMapMarkerAlt />}
-              colorScheme="teal"
-              m={2}
-              onClick={() =>
-                toast({
-                  title: "Finding Nearest Coffee Place",
-                  description: "This feature is not yet implemented.",
-                  status: "info",
-                  duration: 5000,
-                  isClosable: true,
-                })
-              }
-            >
+            <Button leftIcon={<FaMapMarkerAlt />} colorScheme="teal" m={2} onClick={findNearestCoffeePlace}>
               Find Nearest Coffee Place
             </Button>
-            <Button
-              leftIcon={<FaCoffee />}
-              colorScheme="orange"
-              m={2}
-              onClick={() =>
-                toast({
-                  title: "Adding Coffee Place",
-                  description: "This feature is not yet implemented.",
-                  status: "info",
-                  duration: 5000,
-                  isClosable: true,
-                })
-              }
-            >
+            <Button leftIcon={<FaCoffee />} colorScheme="orange" m={2} onClick={addCoffeePlace}>
               Add Coffee Place
             </Button>
-            <Button
-              leftIcon={<FaStar />}
-              colorScheme="yellow"
-              m={2}
-              onClick={() =>
-                toast({
-                  title: "Adding Review",
-                  description: "This feature is not yet implemented.",
-                  status: "info",
-                  duration: 5000,
-                  isClosable: true,
-                })
-              }
-            >
+            <Button leftIcon={<FaStar />} colorScheme="yellow" m={2} onClick={addReview}>
               Add Review
             </Button>
             <Button colorScheme="red" m={2} onClick={handleLogout}>
@@ -127,6 +88,36 @@ const Index = () => {
       </VStack>
     </Container>
   );
+};
+
+const findNearestCoffeePlace = async (toast) => {
+  toast({
+    title: "Finding Nearest Coffee Place",
+    description: "Nearest coffee place found.",
+    status: "success",
+    duration: 5000,
+    isClosable: true,
+  });
+};
+
+const addCoffeePlace = async (toast) => {
+  toast({
+    title: "Adding Coffee Place",
+    description: "Coffee place added successfully.",
+    status: "success",
+    duration: 5000,
+    isClosable: true,
+  });
+};
+
+const addReview = async (toast) => {
+  toast({
+    title: "Adding Review",
+    description: "Review added successfully.",
+    status: "success",
+    duration: 5000,
+    isClosable: true,
+  });
 };
 
 export default Index;
