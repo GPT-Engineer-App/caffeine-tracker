@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, Container, FormControl, FormLabel, Input, VStack, Text, Heading, useToast } from "@chakra-ui/react";
+
+const API_URL = "https://backengine-szma.fly.dev";
 import { FaCoffee, FaMapMarkerAlt, FaStar } from "react-icons/fa";
 
 const Index = () => {
@@ -9,15 +11,38 @@ const Index = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    // TODO: Implement real login logic
-    toast({
-      title: "Logged in successfully.",
-      description: "You've been logged in!",
-      status: "success",
-      duration: 9000,
-      isClosable: true,
-    });
-    setIsLoggedIn(true);
+    try {
+      const response = await fetch(`${API_URL}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "Logged in successfully.",
+          description: `Access Token: ${data.accessToken}`,
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+        setIsLoggedIn(true);
+      } else {
+        throw new Error(data.error);
+      }
+    } catch (error) {
+      toast({
+        title: "Failed to log in.",
+        description: error.toString(),
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   };
 
   const handleLogout = () => {
