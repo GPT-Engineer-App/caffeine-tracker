@@ -46,13 +46,52 @@ const Index = () => {
           <Box textAlign="center">
             <Heading mb={6}>Welcome to Coffee Tracker</Heading>
             <Text mb={4}>Add and review your favorite coffee places!</Text>
-            <Button leftIcon={<FaMapMarkerAlt />} colorScheme="teal" m={2}>
+            <Button
+              leftIcon={<FaMapMarkerAlt />}
+              colorScheme="teal"
+              m={2}
+              onClick={() =>
+                toast({
+                  title: "Finding Nearest Coffee Place",
+                  description: "This feature is not yet implemented.",
+                  status: "info",
+                  duration: 5000,
+                  isClosable: true,
+                })
+              }
+            >
               Find Nearest Coffee Place
             </Button>
-            <Button leftIcon={<FaCoffee />} colorScheme="orange" m={2}>
+            <Button
+              leftIcon={<FaCoffee />}
+              colorScheme="orange"
+              m={2}
+              onClick={() =>
+                toast({
+                  title: "Adding Coffee Place",
+                  description: "This feature is not yet implemented.",
+                  status: "info",
+                  duration: 5000,
+                  isClosable: true,
+                })
+              }
+            >
               Add Coffee Place
             </Button>
-            <Button leftIcon={<FaStar />} colorScheme="yellow" m={2}>
+            <Button
+              leftIcon={<FaStar />}
+              colorScheme="yellow"
+              m={2}
+              onClick={() =>
+                toast({
+                  title: "Adding Review",
+                  description: "This feature is not yet implemented.",
+                  status: "info",
+                  duration: 5000,
+                  isClosable: true,
+                })
+              }
+            >
               Add Review
             </Button>
             <Button colorScheme="red" m={2} onClick={handleLogout}>
